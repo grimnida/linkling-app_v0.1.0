@@ -1,0 +1,14 @@
+{
+  "name": "Linkling",
+  "short_name": "Linkling",
+  "description": "발음 Chunk 인출로 의미 장면을 완성하는 영어 어휘 학습",
+  "lang": "ko",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F7F5F2",
+  "theme_color": "#2F6B4F",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

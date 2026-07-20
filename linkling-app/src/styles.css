@@ -1,0 +1,149 @@
+:root {
+  --bg: #F7F5F2;
+  --panel: #FFFFFF;
+  --ink: #2A2A28;
+  --ink-soft: #6E6B66;
+  --green: #2F6B4F;
+  --green-soft: #E4EFE9;
+  --amber: #F1B45A;
+  --red: #C4453B;
+  --line: #E3E1DC;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { margin: 0; height: 100%; }
+body {
+  font-family: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+button {
+  font: inherit;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+  border-radius: var(--radius);
+  padding: 12px 18px;
+  cursor: pointer;
+  min-height: 44px;
+}
+button:disabled { opacity: 0.5; cursor: default; }
+button:focus-visible { outline: 3px solid var(--green); outline-offset: 2px; }
+button.primary { background: var(--green); border-color: var(--green); color: #fff; }
+button.secondary { background: var(--green-soft); border-color: var(--green-soft); color: var(--green); }
+button.big { font-size: 1.15rem; padding: 16px 24px; }
+
+.center-screen {
+  height: 100%; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 16px; padding: 24px; text-align: center;
+}
+.spinner {
+  width: 42px; height: 42px; border-radius: 50%;
+  border: 4px solid var(--line); border-top-color: var(--green);
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .spinner { animation: none; border-top-color: var(--amber); }
+}
+
+.error-banner {
+  background: #FBEBE9; color: var(--red);
+  border: 1px solid #F0C7C2; border-radius: var(--radius); padding: 12px 16px;
+}
+.notice { background: var(--green-soft); border-radius: var(--radius); padding: 10px 14px; }
+
+.home { max-width: 560px; margin: 0 auto; padding: 20px; display: flex; flex-direction: column; gap: 20px; }
+.app-header h1 { margin: 0; color: var(--green); }
+.home section { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; }
+.home h2 { margin-top: 0; font-size: 1.05rem; }
+.home .primary, .home .secondary { width: 100%; margin-top: 10px; }
+.hint-text { color: var(--ink-soft); font-size: 0.92rem; }
+.pack-list { list-style: none; margin: 0; padding: 0; }
+.pack-list li { display: flex; gap: 10px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.pack-list li:last-child { border-bottom: none; }
+.pack-word { font-weight: 600; flex: 1; }
+.pack-status { font-size: 0.8rem; padding: 2px 8px; border-radius: 999px; background: var(--green-soft); color: var(--green); }
+.pack-status-preview { background: #FCF3E3; color: #9A6B14; }
+.pack-cached { font-size: 0.8rem; color: var(--ink-soft); }
+
+.learn-screen { min-height: 100%; display: flex; flex-direction: column; max-width: 640px; margin: 0 auto; }
+.learn-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 18px; font-weight: 600;
+}
+.step-label { color: var(--green); font-size: 0.9rem; }
+.learn-main { flex: 1; display: flex; flex-direction: column; gap: 14px; padding: 0 16px 16px; }
+
+.scene-view { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.scene-view.scene-hidden { display: none; } /* §5.2 첫 노출: 이미지 숨김 */
+.scene-svg-host svg { width: 100%; height: auto; }
+.scene-canvas { width: 100%; height: auto; display: block; }
+
+.preview-panel, .encode-panel, .recall-panel {
+  display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 18px;
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+}
+.waveform { display: flex; align-items: center; gap: 3px; height: 44px; }
+.waveform i { display: block; width: 4px; border-radius: 2px; background: var(--green); opacity: 0.75; }
+.instruction { margin: 0; color: var(--ink-soft); text-align: center; }
+
+.input-bar {
+  display: flex; flex-direction: column; gap: 10px; padding: 14px 16px;
+  background: var(--panel); border-top: 1px solid var(--line);
+  position: sticky; bottom: 0;
+}
+.input-notice { margin: 0; color: var(--green); font-size: 0.95rem; }
+.mock-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.mock-row button { flex: 1; min-width: 120px; font-size: 0.92rem; }
+.typing-row { display: flex; gap: 8px; }
+.typing-row input {
+  flex: 1; font: inherit; padding: 10px 14px;
+  border: 1px solid var(--line); border-radius: var(--radius);
+}
+.typing-row input:focus-visible { outline: 3px solid var(--green); outline-offset: 1px; }
+.expected-hint { margin: 0; color: var(--ink-soft); font-size: 0.85rem; }
+.assisted-row { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.final-panel { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.bubble {
+  background: #fff; border: 2px solid var(--green); border-radius: 20px;
+  padding: 14px 20px; font-size: 1.1rem; display: flex; flex-direction: column; gap: 4px;
+}
+.meaning {
+  background: var(--green); color: #fff; border-color: var(--green);
+  font-size: 1.3rem; padding: 14px 26px; display: flex; flex-direction: column; gap: 4px;
+}
+.tap-hint { font-size: 0.78rem; opacity: 0.75; }
+.spelling-block { text-align: center; }
+.spelling { font-size: 1.7rem; font-weight: 700; letter-spacing: 0.03em; margin: 6px 0; }
+.big-spelling { font-size: 2.2rem; text-align: center; margin: 40px 0; }
+.grammar { color: var(--ink-soft); margin: 4px 0 12px; }
+.final-actions { display: flex; gap: 10px; justify-content: center; }
+
+.review-screen .bubble-static {
+  text-align: center; background: #fff; border: 1px dashed var(--line);
+  border-radius: 16px; padding: 10px 16px; margin: 0;
+}
+.review-feedback { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.choice-panel { display: flex; flex-direction: column; gap: 8px; padding: 12px; }
+.choice { text-align: left; }
+
+.summary-screen {
+  max-width: 480px; margin: 0 auto; padding: 28px 20px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.summary-list {
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 18px; margin: 0;
+}
+.summary-list dt { color: var(--ink-soft); font-size: 0.9rem; margin-top: 10px; }
+.summary-list dt:first-child { margin-top: 0; }
+.summary-list dd { margin: 2px 0 0; font-weight: 600; }
+
+@media (min-width: 720px) {
+  .learn-screen { padding-top: 12px; }
+}

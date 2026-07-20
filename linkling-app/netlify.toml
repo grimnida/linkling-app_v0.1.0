@@ -1,0 +1,20 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# catalog URL은 Netlify UI 환경 변수로 주입:
+#   VITE_WORDPACK_CATALOG_URL = https://<wordpack-site>/catalog.json
+# Deploy Preview에는 별도 컨텍스트 값으로 preview catalog를 지정할 수 있다.
+#
+# [context.production.environment]
+#   VITE_WORDPACK_CATALOG_URL = "https://<prod-wordpack-site>/catalog.json"
+# [context.deploy-preview.environment]
+#   VITE_WORDPACK_CATALOG_URL = "https://<preview-wordpack-site>/catalog.json"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
